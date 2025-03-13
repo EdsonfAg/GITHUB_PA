@@ -1,5 +1,7 @@
 package Modelo;
 
+import App.Principal;
+
 public class Ticket {
     public static String[][] CrearTicket() {
         return new String[20][4];

@@ -1,4 +1,4 @@
-package Modelo;
+package Persistencia;
 import com.google.gson.Gson;
 import java.io.*;
 import java.lang.reflect.Type;
@@ -50,13 +50,30 @@ public class PersistenciaDatos<T> {
     }
 
     public List<T> cargarJSON(Type tipoLista) {
-        try (Reader reader = new FileReader(archivoJSON)) {
-            return gson.fromJson(reader, tipoLista);
+        try {
+            File file = new File(archivoJSON);
+            if (!file.exists()) { 
+                // 🔥 Si el archivo no existe, lo creamos antes de intentar abrirlo
+                System.out.println("El archivo " + archivoJSON + " no existe. Creando archivo vacío...");
+                try (FileWriter writer = new FileWriter(file)) {
+                    writer.write("[]"); // 🔥 Escribimos una lista vacía en el JSON
+                }
+            }
+
+            // 🔥 Ahora que estamos seguros de que el archivo existe, lo leemos
+            try (Reader reader = new FileReader(archivoJSON);
+                 BufferedReader br = new BufferedReader(reader)) {
+                String json = br.readLine(); // 🔥 Leer la primera línea del JSON
+                System.out.println("Leyendo JSON: " + json); // 🔍 Verificar el contenido
+                
+                return gson.fromJson(json, tipoLista); // 🔥 Usamos json en lugar de reader
+            }
+
         } catch (IOException e) {
             e.printStackTrace();
             return new ArrayList<>();
         }
     }
-}
+  }
 
 

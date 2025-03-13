@@ -1,6 +1,6 @@
 package Modelo;
 
-class Producto extends ItemVenta implements ImpuestoAplicable {
+public class Producto extends ItemVenta implements ImpuestoAplicable {
     private int stock;
 
     public Producto(String codigo, String nombre, double precio, int stock) {
@@ -8,7 +8,11 @@ class Producto extends ItemVenta implements ImpuestoAplicable {
         this.stock = stock;
     }
 
-    public int getStock() {
+	public void setStock(int stock) {
+		this.stock = stock;
+	}
+
+	public int getStock() {
         return stock;
     }
 

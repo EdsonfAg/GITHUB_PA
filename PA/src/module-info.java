@@ -1,19 +1,10 @@
-/**
- * 
- */
-/**
- * 
- */
 module PA {
-	requires java.desktop;
-	requires com.google.gson;
-    requires javafx.controls;
-    requires javafx.fxml;
-    requires javafx.graphics;
-    requires javafx.base;
+    requires java.desktop; // Para Swing
+    requires com.google.gson; // Para JSON
 
-    exports Modelo.Vista; 
-    opens Modelo.Vista to javafx.graphics, javafx.fxml; 
+    exports App;
+   // exports Controlador;
     exports Modelo;
-    opens Modelo to javafx.graphics, javafx.fxml;
+    exports Persistencia;
+    exports Vista;
 }

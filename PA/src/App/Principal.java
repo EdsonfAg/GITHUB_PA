@@ -1,9 +1,15 @@
-package Modelo;
+package App;
 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.List;
+
+import Modelo.Inventario;
+import Modelo.Producto;
+import Modelo.Venta;
+import Persistencia.PersistenciaDatos;
+import Vista.Mostrar;
 
 public class Principal {
     private static Inventario inventario;
@@ -11,13 +17,13 @@ public class Principal {
     private static List<Venta> ventas;
 
     public static void main(String[] args) throws IOException {
-        inventario = new Inventario("productos.csv", "productos.json");
+       inventario = new Inventario("productos.csv", "productos.json");
         persistenciaVentas = new PersistenciaDatos<>("ventas.csv", "ventas.json");
         ventas = persistenciaVentas.cargarJSON(new com.google.gson.reflect.TypeToken<List<Venta>>(){}.getType());
 
         if (ventas.isEmpty()) {
             ventas = new java.util.ArrayList<>();
-        }
+        } 
 
         menuPrincipal();
     }

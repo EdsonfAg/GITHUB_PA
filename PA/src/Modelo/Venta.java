@@ -3,7 +3,7 @@ package Modelo;
 import java.util.ArrayList;
 import java.util.List;
 
-class Venta {
+public class Venta {
 
 	private String idVenta;
 	private List<Producto> productosVendidos;

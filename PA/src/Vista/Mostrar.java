@@ -1,6 +1,9 @@
-package Modelo;
+package Vista;
 
 import java.util.List;
+
+import Modelo.Producto;
+import Modelo.Venta;
 
 public class Mostrar {
 
